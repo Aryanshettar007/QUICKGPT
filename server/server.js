@@ -9,10 +9,10 @@ import creditRouter from './routes/creditRoutes.js';
 import { stripeWebhooks } from './controllers/webhooks.js';
 
 const app = express();
- await connectDB();
+await connectDB();
 
-  //Stripe Webhook 
- app.post('/api/stripe',express.raw({type:'application/json'}),stripeWebhooks);
+// Stripe Webhook 
+app.post('/api/stripe', express.raw({type:'application/json'}), stripeWebhooks);
 
 // Middleware
 app.use(cors());
@@ -20,12 +20,13 @@ app.use(express.json());
 
 // Sample route
 app.get('/', (req, res) => {
-  res.send('Server is live');});
-  app.use('/api', userRouter);
-  app.use('/api/chat', chatRouter);
-  app.use('/api/message', messageRouter);
-  app.use('/api/credit', creditRouter);
-  
+  res.send('Server is live');
+});
+
+app.use('/api/user', userRouter);
+app.use('/api/chat', chatRouter);
+app.use('/api/message', messageRouter);
+app.use('/api/credit', creditRouter);
 
 const PORT = process.env.PORT || 3000;
 
