@@ -16,7 +16,7 @@ export const textMessageController = async (req,res)=>{
         chat.messages.push({role:"user",content:prompt,isImage:false,timestamp:Date.now()});
 
         const {choices} = await openai.chat.completions.create({
-    model: "gemini-2.0-flash",
+    model: "gemini-3-flash-preview",
     messages: [
         {
             role: "user",
