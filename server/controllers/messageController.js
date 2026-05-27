@@ -12,7 +12,12 @@ export const textMessageController = async (req,res)=>{
         if(req.user.credits<1){
             return res.json({success:false,message:"Not enough credits"});    }
         const { chatId, prompt } = req.body
-        const chat = await Chat.findOne({ _id: chatId, userId });
+        const chat = await Chat.findOne({ _id: chatId, userId: String(userId) });
+        
+        if (!chat) {
+            return res.json({success:false,message:"Chat not found"});
+        }
+        
         chat.messages.push({role:"user",content:prompt,isImage:false,timestamp:Date.now()});
 
         const {choices} = await openai.chat.completions.create({
@@ -46,7 +51,7 @@ export const imageMessageController= async(req,res)=>{
     }
     const {chatId,prompt,isPublished}=req.body;
     //Find Chat
-    const chat = await Chat.findOne({_id:chatId,userId});
+    const chat = await Chat.findOne({_id:chatId,userId: String(userId)});
     if (!chat) {
         return res.json({success:false,message:"Chat not found"})
     }
