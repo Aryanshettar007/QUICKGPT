@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # ⚡ QuickGPT — Intelligent AI Assistant
 
 A full-stack AI chat application powered by **Google Gemini** with text generation, AI image creation, a community gallery, and a credit-based billing system.
@@ -297,6 +295,3 @@ This project is open source and available under the [ISC License](https://openso
 <div align="center">
 
 **Built with ❤️ by [Aryan](https://github.com/Aryanshettar007)**
-
-</div>
-]]>
